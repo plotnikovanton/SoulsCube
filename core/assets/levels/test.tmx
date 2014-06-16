@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="8" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="grass" tilewidth="16" tileheight="16">
+  <image source="grass.jpg" width="16" height="16"/>
+ </tileset>
+ <layer name="ground" width="40" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgegJHKZmHDlJpJrD2E7KOmX4k1kxQ7qeU+UsJmINxHCiAUn5SkBVqkV3Q7aAmI8Ts2NjX8CgB9XAA/
+  </data>
+ </layer>
+ <objectgroup name="walls" width="40" height="8">
+  <object x="0" y="96" width="112" height="16"/>
+  <object x="112" y="64" width="112" height="16"/>
+  <object x="160" y="16" width="16" height="48"/>
+  <object x="240" y="32" width="128" height="16"/>
+  <object x="288" y="48" width="16" height="48"/>
+  <object x="144" y="112" width="128" height="16"/>
+  <object x="288" y="112" width="32" height="16"/>
+  <object x="336" y="112" width="64" height="16"/>
+  <object x="400" y="80" width="144" height="16"/>
+  <object x="464" y="16" width="96" height="16"/>
+  <object x="400" y="96" width="16" height="32"/>
+  <object x="464" y="32" width="16" height="48"/>
+ </objectgroup>
+</map>
