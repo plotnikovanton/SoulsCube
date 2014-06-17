@@ -1,4 +1,4 @@
-package com.supercube.game.handlers;
+package com.soulscube.game.handlers;
 
 public class MyInput {
     public static boolean keys[];

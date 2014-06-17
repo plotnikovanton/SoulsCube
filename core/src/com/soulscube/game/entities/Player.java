@@ -1,12 +1,13 @@
-package com.supercube.game.entities;
+package com.soulscube.game.entities;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.supercube.game.handlers.Animation;
-import com.supercube.game.main.Game;
-import com.supercube.game.states.Play;
+import com.soulscube.game.handlers.Animation;
+import com.soulscube.game.handlers.B2DVars;
+import com.soulscube.game.main.Game;
+import com.soulscube.game.states.Play;
 
 import java.util.HashMap;
 
@@ -16,16 +17,20 @@ public class Player extends B2DSprite {
     public static final int NORMAL = 2;
     public static final int JUMP_RIGHT = 3;
     public static final int JUMP_LEFT = 4;
+    public static final int DEAD = 5;
+    public static final int SPAWN = 6;
 
     public static final float SPEED = 1f;
 
     private int currentState;
     private float speedX;
+    private Vector2 checkpoint;
 
     private HashMap<Integer, Animation> animations;
 
-    public Player(Body body) {
+    public Player(Body body, Vector2 checkpoint) {
         super(body);
+        this.checkpoint = checkpoint;
         speedX = 0;
 
         animations = new HashMap<>();
@@ -50,16 +55,30 @@ public class Player extends B2DSprite {
         // jump left
         tmp = mirror[1];
         animations.put(JUMP_LEFT, new Animation(tmp));
+        // spawn
+        tmp = split[0];
+        animations.put(SPAWN, new Animation(tmp));
+        // dead
+        tmp = split[0];
+        animations.put(DEAD, new Animation(tmp));
 
         currentState = -1;
 
-        setState(RUN_RIGHT);
+        setState(SPAWN);
         width = animations.get(RUN_LEFT).getFrame().getRegionWidth();
 
     }
 
     public void setState(int state) {
         if (state != currentState) {
+            // PRESET
+            if (currentState == DEAD) {
+                body.getFixtureList().first().setSensor(false);
+            } else if (currentState == SPAWN) {
+                body.getFixtureList().first().setSensor(false);
+            }
+
+            // SET
             if (state == NORMAL) {
                 if (currentState == RUN_RIGHT || currentState == JUMP_RIGHT) {
                     setAnimation(new Animation(
@@ -69,6 +88,15 @@ public class Player extends B2DSprite {
                             new TextureRegion[]{animations.get(RUN_LEFT).getFrame()}), 0);
                 }
                 currentState = NORMAL;
+            } else if (state == DEAD) {
+                animation = animations.get(DEAD);
+                setState(SPAWN);
+
+            } else if (state == SPAWN) {
+                animation = animations.get(SPAWN);
+                body.setTransform(checkpoint, 0f);
+                body.setActive(true);
+                setState(RUN_RIGHT);
             } else {
                 currentState = state;
                 setAnimation(animations.get(state), 0);
@@ -90,6 +118,10 @@ public class Player extends B2DSprite {
 
     public void update (float dt) {
         super.update(dt);
+        if (body.getPosition().y < -100 / B2DVars.PPM) {
+            setState(DEAD);
+        }
+
 
         // set speed
         if (speedX > 0) {
@@ -106,6 +138,13 @@ public class Player extends B2DSprite {
         vel.x = speedX;
         body.setLinearVelocity(vel);
         speedX = 0;
+    }
+
+    public void setCheckpoint(Vector2 checkpoint) {
+        this.checkpoint = checkpoint;
+    }
+    public Vector2 getCheckpoint() {
+        return checkpoint;
     }
 }
 

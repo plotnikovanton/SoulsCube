@@ -1,13 +1,13 @@
-package com.supercube.game.main;
+package com.soulscube.game.main;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.supercube.game.handlers.Context;
-import com.supercube.game.handlers.GameStateManager;
-import com.supercube.game.handlers.MyInput;
-import com.supercube.game.handlers.MyInputProcessor;
+import com.soulscube.game.handlers.Context;
+import com.soulscube.game.handlers.GameStateManager;
+import com.soulscube.game.handlers.MyInput;
+import com.soulscube.game.handlers.MyInputProcessor;
 
 public class Game implements ApplicationListener{
     public static final String TITLE = "Super Block";
@@ -35,6 +35,7 @@ public class Game implements ApplicationListener{
 
         res = new Context();
         res.loadTexture("death.png", "death");
+        res.loadTexture("hud.png", "hud");
 
         sb = new SpriteBatch();
         cam = new OrthographicCamera();

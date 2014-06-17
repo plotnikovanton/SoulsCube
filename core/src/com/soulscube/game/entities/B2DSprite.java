@@ -1,11 +1,11 @@
-package com.supercube.game.entities;
+package com.soulscube.game.entities;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.supercube.game.handlers.Animation;
-import com.supercube.game.handlers.B2DVars;
+import com.soulscube.game.handlers.Animation;
+import com.soulscube.game.handlers.B2DVars;
 
 public class B2DSprite {
     protected Body body;

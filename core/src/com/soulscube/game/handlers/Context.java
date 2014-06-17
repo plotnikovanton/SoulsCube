@@ -1,4 +1,4 @@
-package com.supercube.game.handlers;
+package com.soulscube.game.handlers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

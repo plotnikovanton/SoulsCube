@@ -1,8 +1,8 @@
-package com.supercube.game.handlers;
+package com.soulscube.game.handlers;
 
-import com.supercube.game.main.Game;
-import com.supercube.game.states.GameState;
-import com.supercube.game.states.Play;
+import com.soulscube.game.main.Game;
+import com.soulscube.game.states.GameState;
+import com.soulscube.game.states.Play;
 
 import java.util.Stack;
 
@@ -31,7 +31,7 @@ public class GameStateManager {
     }
 
     public GameState getState(States state) {
-        if (state == States.PLAY) return new Play(this);
+        if (state == States.PLAY) return new Play(this, "levels/test.tmx");
         return null;
     }
 

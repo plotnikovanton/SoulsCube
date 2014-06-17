@@ -1,4 +1,4 @@
-package com.supercube.game.entities;
+package com.soulscube.game.entities;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Filter;
-import com.supercube.game.handlers.B2DVars;
-import com.supercube.game.states.Play;
+import com.soulscube.game.handlers.B2DVars;
+import com.soulscube.game.states.Play;
 
 public class Cube extends B2DSprite {
     public static final int CONTROLLED = 0;

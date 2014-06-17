@@ -1,4 +1,4 @@
-package com.supercube.game.handlers;
+package com.soulscube.game.handlers;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;

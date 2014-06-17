@@ -1,9 +1,9 @@
-package com.supercube.game.states;
+package com.soulscube.game.states;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.supercube.game.handlers.GameStateManager;
-import com.supercube.game.main.Game;
+import com.soulscube.game.handlers.GameStateManager;
+import com.soulscube.game.main.Game;
 
 public abstract class GameState {
     protected GameStateManager gsm;
