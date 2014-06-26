@@ -157,7 +157,7 @@ public class Play extends GameState {
         // Check spike contact
         // ##################
         if (cl.isPlayerOnSpike()){
-            player.setState(Player.State.DEAD);
+            if (player.getState()!=Player.State.SPAWN)player.setState(Player.State.DEAD);
         }
 
         // ##################
