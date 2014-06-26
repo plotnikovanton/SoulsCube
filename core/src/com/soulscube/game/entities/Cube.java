@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Filter;
 import com.soulscube.game.handlers.B2DVars;
-import com.soulscube.game.states.Play;
 
 public class Cube extends B2DSprite {
     public static final int CONTROLLED = 0;
@@ -20,9 +19,11 @@ public class Cube extends B2DSprite {
     private float timer;
     public Vector2 velocity;
     private Vector2 target;
+    private Player player;
 
-    public Cube(Body body) {
+    public Cube(Body body, Player player) {
         super(body);
+        this.player = player;
         velocity = new Vector2(0,0);
         currentState = -1;
         setState(FOLLOW);
@@ -40,7 +41,7 @@ public class Cube extends B2DSprite {
                 filter.maskBits = B2DVars.BIT_GROUND;
                 body.getFixtureList().first().setFilterData(filter);
                 //body.setType(BodyDef.BodyType.DynamicBody);
-                Play.player.getBody().setAwake(true);
+                player.getBody().setAwake(true);
             } else if (currentState == FOLLOW) {
                 body.getFixtureList().first().setSensor(false);
             }
@@ -82,9 +83,9 @@ public class Cube extends B2DSprite {
 
         if (currentState == FOLLOW) {
             target = new Vector2();
-            target.x = Play.player.getPosition().x; //+
+            target.x = player.getPosition().x; //+
                     //Math.signum(Play.player.getPosition().x-getPosition().x)*13 / B2DVars.PPM;
-            target.y = Play.player.getPosition().y + 13/B2DVars.PPM;
+            target.y = player.getPosition().y + 13/B2DVars.PPM;
             Vector2 vel = target.sub(getPosition()).scl(5);
             velocity = vel;
         }

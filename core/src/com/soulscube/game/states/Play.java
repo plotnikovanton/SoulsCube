@@ -40,8 +40,8 @@ public class Play extends GameState {
     private OrthogonalTiledMapRenderer tmr;
     private float tileSize;
 
-    public static Player player;
-    public static Cube cube;
+    private Player player;
+    private Cube cube;
     private boolean debug = true;
 
     private Body startDoor;
@@ -122,11 +122,20 @@ public class Play extends GameState {
         }
     }
     @Override
-    public void update(float dt) {
+    public void update(float dt)  {
         handleInput();
         world.step(dt, 6, 2);
         player.update(dt);
         cube.update(dt);
+
+        // ##################
+        // If win try to go next level
+        // ##################
+        if (cl.isWin()) {
+            System.out.println("NextLevelTime");
+            dispose();
+            gsm.nextLevel();
+        }
 
         // ##################
         // Reset checkpoint
@@ -148,12 +157,12 @@ public class Play extends GameState {
         // Check spike contact
         // ##################
         if (cl.isPlayerOnSpike()){
-            player.setState(Player.DEAD);
+            player.setState(Player.State.DEAD);
         }
 
         // ##################
         // Set camera follow
-        // ##################
+        // ##################                                  wa
         if (cube.getCurrentState() != Cube.CONTROLLED) {
             cam.position.lerp(
                     new Vector3(player.getPosition().x * PPM, player.getPosition().y * PPM, 0), 3f*dt);
@@ -252,8 +261,10 @@ public class Play extends GameState {
         shape.setAsBox(5 / PPM, 5 / PPM);
         fdef.shape = shape;
         body.createFixture(fdef).setUserData("cube");
-        cube = new Cube(body);
+        cube = new Cube(body, player);
         body.setUserData(cube);
+
+        shape.dispose();
     }
     private void createDoors() {
         MapObjects doors = tileMap.getLayers().get("doors").getObjects();
@@ -280,13 +291,16 @@ public class Play extends GameState {
                 startDoor.createFixture(fdef);
             } else if (door.getName().equals("end")) {
                 endDoor = world.createBody(bdef);
-                endDoor.createFixture(fdef);
+                endDoor.createFixture(fdef).setUserData("end");
             } else if (door.getName().equals("checkpoint")) {
                 Body checkpoint = world.createBody(bdef);
                 checkpoint.createFixture(fdef).setUserData("checkpoint");
                 checkpoints.add(checkpoint);
             }
+
         }
+
+        shape.dispose();
     }
     private void createPlayer() {
         BodyDef bdef = new BodyDef();

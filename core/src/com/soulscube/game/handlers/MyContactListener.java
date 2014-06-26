@@ -9,11 +9,13 @@ public class MyContactListener implements ContactListener {
     private int numSpikesContacts;
     private Array<Body> bodyToRemove;
     private Vector2 checkpoint;
+    private boolean win;
 
     public MyContactListener(Vector2 startPoint) {
         super();
         bodyToRemove = new Array<>();
         checkpoint = startPoint;
+        win = false;
     }
 
     @Override
@@ -39,7 +41,13 @@ public class MyContactListener implements ContactListener {
             startCheckpointContact(fa, fb);
         }
 
+        if (fa.getUserData() != null && fa.getUserData().equals("end") || fb.getUserData() != null && fb.getUserData().equals("end")) {
+            startEndContact(fa, fb);
+        }
+
     }
+
+
     @Override
     public void endContact(Contact contact) {
         Fixture fa = contact.getFixtureA();
@@ -58,6 +66,15 @@ public class MyContactListener implements ContactListener {
     }
 
     //Contacts
+    private void startEndContact(Fixture fa, Fixture fb) {
+        if (fb.getUserData() != null && fb.getUserData().equals("checkpoint")) {
+            Fixture tmp = fb;
+            fb = fa;
+            fa = tmp;
+        }
+
+        win = true;
+    }
     private void startCheckpointContact(Fixture fa, Fixture fb) {
         if (fb.getUserData() != null && fb.getUserData().equals("checkpoint")) {
             Fixture tmp = fb;
@@ -127,6 +144,9 @@ public class MyContactListener implements ContactListener {
     }
     public Vector2 getCheckpoint() {
         return checkpoint;
+    }
+    public boolean isWin() {
+        return win;
     }
 
     // Useless

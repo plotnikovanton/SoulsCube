@@ -9,15 +9,22 @@ import java.util.Stack;
 public class GameStateManager {
     private Game game;
     private Stack<GameState> gameStates;
+    private String[] levels = {
+            "levels/level1.tmx",
+            "levels/test.tmx",
+            "levels/test.tmx"
+    };
+    private int curLevel;
 
     public static enum States {
-        PLAY
+        PLAY,
     }
 
     public GameStateManager(Game game) {
         this.game = game;
         gameStates = new Stack<>();
         pushState(States.PLAY);
+        curLevel = 0;
     }
 
     public Game game() { return game; }
@@ -31,7 +38,7 @@ public class GameStateManager {
     }
 
     public GameState getState(States state) {
-        if (state == States.PLAY) return new Play(this, "levels/test.tmx");
+        if (state == States.PLAY) return loadLevel(curLevel);
         return null;
     }
 
@@ -47,5 +54,18 @@ public class GameStateManager {
     public void popState() {
         GameState g = gameStates.pop();
         g.dispose();
+    }
+
+    public void nextLevel() {
+        GameState g = gameStates.pop();
+        g.dispose();
+        curLevel++;
+        pushState(States.PLAY);
+        //return loadLevel(curLevel + 1);
+    }
+
+    public GameState loadLevel(int n) {
+        curLevel = n;
+        return new Play(this, levels[n]);
     }
 }

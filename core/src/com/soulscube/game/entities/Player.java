@@ -11,22 +11,27 @@ import com.soulscube.game.states.Play;
 
 import java.util.HashMap;
 
+import static com.soulscube.game.entities.Player.State.*;
+
 public class Player extends B2DSprite {
-    public static final int RUN_RIGHT = 0;
-    public static final int RUN_LEFT = 1;
-    public static final int NORMAL = 2;
-    public static final int JUMP_RIGHT = 3;
-    public static final int JUMP_LEFT = 4;
-    public static final int DEAD = 5;
-    public static final int SPAWN = 6;
+    public static enum State{
+        RUN_RIGHT,
+        RUN_LEFT,
+        NORMAL,
+        JUMP_RIGHT,
+        JUMP_LEFT,
+        DEAD,
+        SPAWN
+    }
 
     public static final float SPEED = 1f;
 
-    private int currentState;
+    private State currentState;
+    private float timer;
     private float speedX;
     private Vector2 checkpoint;
 
-    private HashMap<Integer, Animation> animations;
+    private HashMap<State, Animation> animations;
 
     public Player(Body body, Vector2 checkpoint) {
         super(body);
@@ -56,20 +61,20 @@ public class Player extends B2DSprite {
         tmp = mirror[1];
         animations.put(JUMP_LEFT, new Animation(tmp));
         // spawn
-        tmp = split[0];
-        animations.put(SPAWN, new Animation(tmp));
+        tmp = split[2];
+        animations.put(SPAWN, new Animation(tmp, 1.0f));
         // dead
-        tmp = split[0];
-        animations.put(DEAD, new Animation(tmp));
+        tmp = split[2];
+        animations.put(DEAD, new Animation(tmp, 1.0f));
 
-        currentState = -1;
+        currentState = DEAD;
 
         setState(SPAWN);
         width = animations.get(RUN_LEFT).getFrame().getRegionWidth();
 
     }
 
-    public void setState(int state) {
+    public void setState(State state) {
         if (state != currentState) {
             // PRESET
             if (currentState == DEAD) {
@@ -89,9 +94,8 @@ public class Player extends B2DSprite {
                 }
                 currentState = NORMAL;
             } else if (state == DEAD) {
+                timer = 0;
                 animation = animations.get(DEAD);
-                setState(SPAWN);
-
             } else if (state == SPAWN) {
                 animation = animations.get(SPAWN);
                 body.setTransform(checkpoint, 0f);
@@ -104,7 +108,7 @@ public class Player extends B2DSprite {
         }
     }
 
-    public int getState() {
+    public State getState() {
         return currentState;
     }
 
@@ -121,23 +125,32 @@ public class Player extends B2DSprite {
         if (body.getPosition().y < -100 / B2DVars.PPM) {
             setState(DEAD);
         }
+        System.out.println(currentState);
+
+        if (currentState == DEAD){
+            if (timer >= 5) setState(SPAWN);
+            System.out.println(timer);
+            timer+=dt;
+        } else {
 
 
-        // set speed
-        if (speedX > 0) {
-            if (Play.cl.isPlayerOnGround() ) setState(RUN_RIGHT);
-            else setState(JUMP_RIGHT);
+            // set speed
+            if (speedX > 0) {
+                if (Play.cl.isPlayerOnGround()) setState(RUN_RIGHT);
+                else setState(JUMP_RIGHT);
+            }
+            if (speedX < 0) {
+                if (Play.cl.isPlayerOnGround()) setState(RUN_LEFT);
+                else setState(JUMP_LEFT);
+            }
+            if (speedX == 0) {
+                setState(NORMAL);
+            }
+            Vector2 vel = body.getLinearVelocity();
+            vel.x = speedX;
+            body.setLinearVelocity(vel);
+            speedX = 0;
         }
-        if (speedX < 0) {
-            if (Play.cl.isPlayerOnGround() ) setState(RUN_LEFT);
-            else setState(JUMP_LEFT);
-        } if (speedX == 0) {
-            setState(NORMAL);
-        }
-        Vector2 vel = body.getLinearVelocity();
-        vel.x = speedX;
-        body.setLinearVelocity(vel);
-        speedX = 0;
     }
 
     public void setCheckpoint(Vector2 checkpoint) {

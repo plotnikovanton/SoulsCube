@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="8" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="grass" tilewidth="16" tileheight="16">
+  <image source="grass.jpg" width="16" height="16"/>
+ </tileset>
+ <layer name="ground" width="40" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAEjAOASQGkqqcUjLqPMjCU3TcQeYFW+WYUYAIA5VQATg==
+  </data>
+ </layer>
+ <objectgroup name="walls" width="40" height="8">
+  <object x="80" y="80" width="464" height="16"/>
+  <object x="80" y="0" width="464" height="16"/>
+  <object x="80" y="16" width="16" height="64"/>
+  <object x="528" y="16" width="16" height="64"/>
+ </objectgroup>
+ <objectgroup name="doors" width="40" height="8">
+  <object name="start" x="128" y="32" width="16" height="16"/>
+  <object name="end" x="288" y="16" width="48" height="64"/>
+ </objectgroup>
+ <objectgroup name="spikes" width="40" height="8"/>
+ <objectgroup name="candys" width="40" height="8"/>
+ <layer name="Слой тайлов 2" width="40" height="8" opacity="0.36">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgegBELGxcNYyPz6QHQ7WREExts7kMWR6fp7T5c8YsefrjCczCAgYjTUYAfAABo0AAi
+  </data>
+ </layer>
+</map>
