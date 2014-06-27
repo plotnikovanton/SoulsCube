@@ -3,18 +3,19 @@ package com.soulscube.game.handlers;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.soulscube.game.entities.Player;
+import com.soulscube.game.entities.Spawner;
 
 public class MyContactListener implements ContactListener {
     private int numFootContacts;
     private int numSpikesContacts;
     private Array<Body> bodyToRemove;
-    private Vector2 checkpoint;
     private boolean win;
+    private Spawner prewSpawner;
 
     public MyContactListener(Vector2 startPoint) {
         super();
         bodyToRemove = new Array<>();
-        checkpoint = startPoint;
         win = false;
     }
 
@@ -82,7 +83,16 @@ public class MyContactListener implements ContactListener {
             fa = tmp;
         }
 
-        checkpoint = fa.getBody().getPosition();
+        Spawner spawner = (Spawner) fa.getBody().getUserData();
+        Player player = (Player)fb.getBody().getUserData();
+
+        if (prewSpawner == null || !prewSpawner.equals(spawner)) {
+            if (prewSpawner != null) prewSpawner.changeState();
+            spawner.changeState();
+            player.setCheckpoint(spawner.getPosition());
+        }
+
+        prewSpawner = spawner;
     }
     private void startCandyContact(Fixture fa, Fixture fb) {
         if (fb.getUserData() != null && fb.getUserData().equals("candy")) {
@@ -141,9 +151,6 @@ public class MyContactListener implements ContactListener {
     // Getters
     public Array<Body> getBodyToRemove() {
         return bodyToRemove;
-    }
-    public Vector2 getCheckpoint() {
-        return checkpoint;
     }
     public boolean isWin() {
         return win;

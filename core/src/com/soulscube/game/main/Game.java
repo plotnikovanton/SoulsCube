@@ -9,6 +9,9 @@ import com.soulscube.game.handlers.GameStateManager;
 import com.soulscube.game.handlers.MyInput;
 import com.soulscube.game.handlers.MyInputProcessor;
 
+/**
+ * game class
+ */
 public class Game implements ApplicationListener{
     public static final String TITLE = "Super Block";
     public static int V_WIDTH = 320;
@@ -29,6 +32,9 @@ public class Game implements ApplicationListener{
     public OrthographicCamera getCamera() { return cam; }
     public OrthographicCamera getHudCamera() { return hudCam; }
 
+    /**
+     * create main objects and load resources
+     */
     @Override
     public void create() {
         Gdx.input.setInputProcessor(new MyInputProcessor());
@@ -36,6 +42,8 @@ public class Game implements ApplicationListener{
         res = new Context();
         res.loadTexture("death.png", "death");
         res.loadTexture("hud.png", "hud");
+        res.loadTexture("coin.png", "coin");
+        res.loadTexture("spawner.png", "spawner");
 
         sb = new SpriteBatch();
         cam = new OrthographicCamera();

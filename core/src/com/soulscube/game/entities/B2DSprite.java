@@ -7,6 +7,9 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.soulscube.game.handlers.Animation;
 import com.soulscube.game.handlers.B2DVars;
 
+/**
+ * parent class for all animated entities
+ */
 public class B2DSprite {
     protected Body body;
     protected Animation animation;
@@ -19,12 +22,22 @@ public class B2DSprite {
 
     }
 
+    /**
+     *
+     * @param reg regions with animations frames
+     * @param delay frame delay
+     */
     public void setAnimation(TextureRegion[] reg, float delay) {
         animation.setFrames(reg, delay);
         width = reg[0].getRegionWidth();
         height = reg[0].getRegionHeight();
     }
 
+    /**
+     *
+     * @param animation animation
+     * @param frame start frame
+     */
     public void setAnimation(Animation animation, int frame) {
         this.animation = animation;
         this.animation.setCurrentFrame(frame);

@@ -16,8 +16,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.soulscube.game.entities.Coin;
 import com.soulscube.game.entities.Cube;
 import com.soulscube.game.entities.Player;
+import com.soulscube.game.entities.Spawner;
 import com.soulscube.game.handlers.B2DVars;
 import com.soulscube.game.handlers.GameStateManager;
 import com.soulscube.game.handlers.MyContactListener;
@@ -46,7 +48,8 @@ public class Play extends GameState {
 
     private Body startDoor;
     private Body endDoor;
-    private Array<Body> checkpoints;
+    private Array<Spawner> checkpoints;
+    private Array<Coin> coins;
 
     public Play(GameStateManager gsm, String level) {
         super(gsm);
@@ -58,6 +61,7 @@ public class Play extends GameState {
         tmr = new OrthogonalTiledMapRenderer(tileMap);
 
         checkpoints = new Array<>();
+        coins = new Array<>();
 
         // create doors
         createDoors();
@@ -138,17 +142,11 @@ public class Play extends GameState {
         }
 
         // ##################
-        // Reset checkpoint
-        // ##################
-        if (!cl.getCheckpoint().equals(player.getCheckpoint())) {
-            player.setCheckpoint(cl.getCheckpoint());
-        }
-
-        // ##################
         // Remove candys
         // ##################
         Array<Body> bodies = cl.getBodyToRemove();
         for (Body body : bodies) {
+            coins.removeValue((Coin)body.getUserData(), true);
             world.destroyBody(body);
         }
         bodies.clear();
@@ -161,8 +159,14 @@ public class Play extends GameState {
         }
 
         // ##################
+        // Update objects
+        // ##################
+        //coins
+        for (Coin coin : coins) coin.update(dt);
+
+        // ##################
         // Set camera follow
-        // ##################                                  wa
+        // ##################
         if (cube.getCurrentState() != Cube.CONTROLLED) {
             cam.position.lerp(
                     new Vector3(player.getPosition().x * PPM, player.getPosition().y * PPM, 0), 3f*dt);
@@ -202,6 +206,15 @@ public class Play extends GameState {
         player.render(sb);
         //cube.render(sb);
 
+        // draw candys
+        for (Coin coin : coins) {
+            coin.render(sb);
+        }
+        // draw spawners
+        for (Spawner spawner : checkpoints) {
+            spawner.render(sb);
+        }
+
         // draw box2d world
         if (debug) b2dr.render(world, b2dCam.combined);
     }
@@ -230,7 +243,12 @@ public class Play extends GameState {
                     (float)candy.getProperties().get("x") / PPM,
                     (float)candy.getProperties().get("y") / PPM
             ));
-            world.createBody(bdef).createFixture(fdef).setUserData("candy");
+
+            Body body = world.createBody(bdef);
+            Coin coin = new Coin(body);
+            body.setUserData(coin);
+            coins.add(coin);
+            body.createFixture(fdef).setUserData("candy");
         }
     }
     private void createSpikes() {
@@ -294,8 +312,10 @@ public class Play extends GameState {
                 endDoor.createFixture(fdef).setUserData("end");
             } else if (door.getName().equals("checkpoint")) {
                 Body checkpoint = world.createBody(bdef);
+                Spawner spawner = new Spawner(checkpoint);
+                checkpoint.setUserData(spawner);
                 checkpoint.createFixture(fdef).setUserData("checkpoint");
-                checkpoints.add(checkpoint);
+                checkpoints.add(spawner);
             }
 
         }
@@ -320,6 +340,7 @@ public class Play extends GameState {
 
         body.createFixture(fdef).setUserData("player");
         player = new Player(body, startDoor.getPosition());
+        body.setUserData(player);
 
         // create foot sensor
         shape.setAsBox(4f / PPM, 2 / PPM, new Vector2(0, -10 / PPM), 0);
