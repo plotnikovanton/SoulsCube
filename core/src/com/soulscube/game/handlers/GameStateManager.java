@@ -1,5 +1,6 @@
 package com.soulscube.game.handlers;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.soulscube.game.main.Game;
 import com.soulscube.game.states.GameEnd;
 import com.soulscube.game.states.GameState;
@@ -12,8 +13,12 @@ public class GameStateManager {
     private Stack<GameState> gameStates;
     private String[] levels = {
             "levels/level1.tmx",
-            "levels/test.tmx",
-            "levels/test.tmx"
+            "levels/level2.tmx"
+    };
+
+    private Texture[] bgs = {
+            Game.res.getTexture("bg1"),
+            Game.res.getTexture("bg2")
     };
     private int curLevel;
 
@@ -73,6 +78,6 @@ public class GameStateManager {
 
     public GameState loadLevel(int n) {
         curLevel = n;
-        return new Play(this, levels[n]);
+        return new Play(this, levels[n], bgs[n]);
     }
 }

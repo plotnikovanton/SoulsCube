@@ -8,12 +8,12 @@
  </tileset>
  <layer name="ground" width="100" height="40">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
- <layer name="water" width="100" height="40" opacity="0.24">
+ <layer name="water" width="100" height="40" opacity="0.69">
   <data encoding="base64" compression="zlib">
-   eJzt1+0KgyAYBlD/tH95/5c7gslexCzE2ohz4EVoMsInv1ICAAAAAAAAAAAAgP+0TK7Xva//OGv6juNRrZ0q/5Hvff3HOfO950+VXJbQmh9znZkfW59WHvH3+IxxcRxzp2K/Vn7Wqzl669TWlrnRyyMn69UsrW89rj+tPEoG8piv3rPjOMdx7+0xW5+YIeOOzlRn8qjnFONa94g6l3q/l8d1js6ue+uXPK6xd+drrVl1n707CePK+am0seKzOo/e/v9rb3R2CGc=
+   eJzt19sKgzAMANCCvun/f+8eZlkIqQzpZMg5UOrtoTRNgq0BAAAAAAAAAAAAwH9aJo/13uU/ztbe+7hNGvu9y3+cGIv9GGv7nPV4/e3Mdb3OVDHp98sxb4M5v+e6WPd7XKo8yd+N5uXe5T9Odeb7dd/j/Fx+/M7o3Mc9rvIj3m9N/5iln/tRXcr9Jda0mB/xOddVuZFrU4/DWd+IMeW6vLcxDqM+XvUR+TFHVZ/ynlf1SX78RtU/qrnKj7XJj9lizz6rQTk/8nf/9P/xAnUEB0Q=
   </data>
  </layer>
  <objectgroup name="walls" width="100" height="40">
@@ -43,8 +43,6 @@
   <object x="848" y="320" width="32" height="16"/>
   <object x="816" y="336" width="64" height="16"/>
   <object x="784" y="352" width="32" height="16"/>
-  <object x="752" y="368" width="48" height="16"/>
-  <object x="752" y="384" width="112" height="16"/>
   <object x="976" y="272" width="32" height="32"/>
   <object x="912" y="320" width="32" height="16"/>
   <object x="1040" y="240" width="32" height="32"/>
@@ -57,6 +55,8 @@
   <object x="1232" y="32" width="32" height="16"/>
   <object x="1264" y="16" width="32" height="16"/>
   <object x="1296" y="0" width="16" height="16"/>
+  <object x="752" y="368" width="48" height="32"/>
+  <object x="800" y="384" width="64" height="16"/>
  </objectgroup>
  <objectgroup name="doors" width="100" height="40">
   <object name="start" x="384" y="208" width="16" height="16"/>
@@ -67,6 +67,7 @@
  </objectgroup>
  <objectgroup name="spikes" width="100" height="40">
   <object x="752" y="432" width="336" height="16"/>
+  <object x="1088" y="416" width="160" height="16"/>
  </objectgroup>
  <objectgroup name="candys" width="100" height="40">
   <object x="448" y="336" width="16" height="16">

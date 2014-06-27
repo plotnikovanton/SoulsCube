@@ -41,9 +41,9 @@ public class Cube extends B2DSprite {
 
     public void setState(int state) {
         if (currentState != state){
+            timerSnd.stop();
             // preset
             if (currentState == WAIT) {
-                timerSnd.stop();
                 Filter filter = body.getFixtureList().first().getFilterData();
                 filter.maskBits = B2DVars.BIT_GROUND;
                 body.getFixtureList().first().setFilterData(filter);
@@ -54,7 +54,7 @@ public class Cube extends B2DSprite {
             }
             // set
             if (state == WAIT) {
-                timerSnd.loop();
+                timerSnd.loop(0.3f);
                 timer = 0;
                 Filter filter = body.getFixtureList().first().getFilterData();
                 filter.maskBits = B2DVars.BIT_GROUND | B2DVars.BIT_PLAYER;

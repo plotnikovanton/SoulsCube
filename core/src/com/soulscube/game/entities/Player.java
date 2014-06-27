@@ -163,7 +163,10 @@ public class Player extends B2DSprite {
         }
 
         if (currentState == SPAWN) {
-            if (timer >= 0.5) setState(NORMAL);
+            if (timer >= 0.5) {
+                speedX = 0;
+                setState(NORMAL);
+            }
             timer+=dt;
         } else if (currentState == DEAD){
             if (timer >= 0.5) setState(SPAWN);

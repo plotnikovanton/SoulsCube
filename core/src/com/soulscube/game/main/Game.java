@@ -45,7 +45,8 @@ public class Game implements ApplicationListener{
         res.loadTexture("coin.png", "coin");
         res.loadTexture("spawner.png", "spawner");
         res.loadTexture("cube.png", "cube");
-        res.loadTexture("levels/summer_bg.png", "bg");
+        res.loadTexture("levels/summer_bg.png", "bg1");
+        res.loadTexture("levels/hell_bg.jpg", "bg2");
 
         res.loadMusic("game.mp3", "main_music");
         res.getMusic("main_music").setLooping(true);

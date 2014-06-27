@@ -3,6 +3,7 @@ package com.soulscube.game.states;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
@@ -47,10 +48,12 @@ public class Play extends GameState {
     private Array<Coin> coins;
 
     private HUD hud;
+    private Texture bg;
 
-    public Play(GameStateManager gsm, String level) {
+    public Play(GameStateManager gsm, String level, Texture bg) {
         super(gsm);
 
+        this.bg = bg;
         world = new World(new Vector2(0, -9.81f), true);
         b2dr = new Box2DDebugRenderer();
 
@@ -202,7 +205,8 @@ public class Play extends GameState {
         // draw bg
         sb.setProjectionMatrix(hudCam.combined);
         sb.begin();
-        sb.draw(Game.res.getTexture("bg"), 0, 0);
+        Vector2 bgPrePos = cube.getCurrentState() == Cube.CONTROLLED ? cube.getPosition() : player.getPosition();
+        sb.draw(bg, -bgPrePos.x*PPM*0.1f, -bgPrePos.y*PPM*0.1f);
         sb.end();
 
 
