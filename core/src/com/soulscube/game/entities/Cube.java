@@ -1,12 +1,12 @@
 package com.soulscube.game.entities;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Filter;
 import com.soulscube.game.handlers.B2DVars;
+import com.soulscube.game.main.Game;
 
 public class Cube extends B2DSprite {
     public static final int CONTROLLED = 0;
@@ -20,12 +20,14 @@ public class Cube extends B2DSprite {
     public Vector2 velocity;
     private Vector2 target;
     private Player player;
+    private TextureRegion[] textures;
 
     public Cube(Body body, Player player) {
         super(body);
         this.player = player;
         velocity = new Vector2(0,0);
         currentState = -1;
+        textures = TextureRegion.split(Game.res.getTexture("cube"), 6, 6)[0];
         setState(FOLLOW);
     }
 
@@ -53,8 +55,12 @@ public class Cube extends B2DSprite {
                 body.getFixtureList().first().setFilterData(filter);
                 //body.setType(BodyDef.BodyType.KinematicBody);
                 //body.getFixtureList().first().setSensor(false);
+                setAnimation(new TextureRegion[]{textures[1]}, 100);
             } else if (state == FOLLOW) {
                 body.getFixtureList().first().setSensor(true);
+                setAnimation(new TextureRegion[]{textures[0]}, 100);
+            } else if (state == CONTROLLED) {
+                setAnimation(new TextureRegion[]{textures[2]}, 100);
             }
             // post set
             // System.out.println("cube status: " + state);
@@ -100,15 +106,15 @@ public class Cube extends B2DSprite {
     @Override
     public void render(SpriteBatch sb) {
         super.render(sb);
-
-        BitmapFont font = new BitmapFont();
-        font.setColor(Color.RED);
-
-        if (currentState == WAIT) {
-            sb.begin();
-            font.draw(sb, Integer.toString((int) timer), body.getPosition().x * B2DVars.PPM, body.getPosition().y * B2DVars.PPM);
-            font.draw(sb, "HELLO WORLD", 150, 150);
-            sb.end();
-        }
+//
+//        BitmapFont font = new BitmapFont();
+//        font.setColor(Color.RED);
+//
+//        if (currentState == WAIT) {
+//            sb.begin();
+//            font.draw(sb, Integer.toString((int) timer), player.getBody().getPosition().x * B2DVars.PPM, player.getBody().getPosition().y * B2DVars.PPM);
+//            font.draw(sb, "HELLO WORLD", 150, 150);
+//            sb.end();
+//        }
     }
 }

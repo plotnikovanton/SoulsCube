@@ -64,17 +64,19 @@ public class MyContactListener implements ContactListener {
         if (fa.getUserData() != null && fa.getUserData().equals("spike") || fb.getUserData() != null && fb.getUserData().equals("spike")) {
             endSpikeContact(fa, fb);
         }
+
+        if (fa.getUserData() != null && fa.getUserData().equals("end") || fb.getUserData() != null && fb.getUserData().equals("end")) {
+            endEndContact(fa, fb);
+        }
     }
+
 
     //Contacts
     private void startEndContact(Fixture fa, Fixture fb) {
-        if (fb.getUserData() != null && fb.getUserData().equals("checkpoint")) {
-            Fixture tmp = fb;
-            fb = fa;
-            fa = tmp;
-        }
-
         win = true;
+    }
+    private void endEndContact(Fixture fa, Fixture fb) {
+        win = false;
     }
     private void startCheckpointContact(Fixture fa, Fixture fb) {
         if (fb.getUserData() != null && fb.getUserData().equals("checkpoint")) {

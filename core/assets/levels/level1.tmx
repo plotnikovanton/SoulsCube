@@ -19,7 +19,20 @@
   <object name="end" x="288" y="16" width="48" height="64"/>
  </objectgroup>
  <objectgroup name="spikes" width="40" height="8"/>
- <objectgroup name="candys" width="40" height="8"/>
+ <objectgroup name="candys" width="40" height="8">
+  <object x="170" y="49">
+   <ellipse/>
+  </object>
+  <object x="209" y="34">
+   <ellipse/>
+  </object>
+  <object x="241" y="30">
+   <ellipse/>
+  </object>
+  <object x="259" y="49">
+   <ellipse/>
+  </object>
+ </objectgroup>
  <layer name="Слой тайлов 2" width="40" height="8" opacity="0.36">
   <data encoding="base64" compression="zlib">
    eJxjYBgegBELGxcNYyPz6QHQ7WREExts7kMWR6fp7T5c8YsefrjCczCAgYjTUYAfAABo0AAi

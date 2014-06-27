@@ -16,19 +16,14 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
-import com.soulscube.game.entities.Coin;
-import com.soulscube.game.entities.Cube;
-import com.soulscube.game.entities.Player;
-import com.soulscube.game.entities.Spawner;
+import com.soulscube.game.entities.*;
 import com.soulscube.game.handlers.B2DVars;
 import com.soulscube.game.handlers.GameStateManager;
 import com.soulscube.game.handlers.MyContactListener;
 import com.soulscube.game.handlers.MyInput;
 import com.soulscube.game.main.Game;
 
-import static com.soulscube.game.handlers.B2DVars.BIT_CANDYS;
-import static com.soulscube.game.handlers.B2DVars.BIT_PLAYER;
-import static com.soulscube.game.handlers.B2DVars.PPM;
+import static com.soulscube.game.handlers.B2DVars.*;
 
 public class Play extends GameState {
     // set up b2d
@@ -51,6 +46,8 @@ public class Play extends GameState {
     private Array<Spawner> checkpoints;
     private Array<Coin> coins;
 
+    private HUD hud;
+
     public Play(GameStateManager gsm, String level) {
         super(gsm);
 
@@ -63,6 +60,8 @@ public class Play extends GameState {
         checkpoints = new Array<>();
         coins = new Array<>();
 
+
+
         // create doors
         createDoors();
         // create player
@@ -73,6 +72,7 @@ public class Play extends GameState {
         createWalls();
         createSpikes();
         createCandys();
+        hud = new HUD(player, coins, coins.size);
 
 
         // set cam
@@ -135,7 +135,7 @@ public class Play extends GameState {
         // ##################
         // If win try to go next level
         // ##################
-        if (cl.isWin()) {
+        if (cl.isWin() && coins.size == 0) {
             System.out.println("NextLevelTime");
             dispose();
             gsm.nextLevel();
@@ -204,7 +204,7 @@ public class Play extends GameState {
         // draw player
         sb.setProjectionMatrix(cam.combined);
         player.render(sb);
-        //cube.render(sb);
+        cube.render(sb);
 
         // draw candys
         for (Coin coin : coins) {
@@ -217,6 +217,10 @@ public class Play extends GameState {
 
         // draw box2d world
         if (debug) b2dr.render(world, b2dCam.combined);
+
+        // draw hud
+        sb.setProjectionMatrix(hudCam.combined);
+        hud.render(sb);
     }
     @Override
     public void dispose() {

@@ -44,6 +44,7 @@ public class Game implements ApplicationListener{
         res.loadTexture("hud.png", "hud");
         res.loadTexture("coin.png", "coin");
         res.loadTexture("spawner.png", "spawner");
+        res.loadTexture("cube.png", "cube");
 
         sb = new SpriteBatch();
         cam = new OrthographicCamera();
