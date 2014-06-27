@@ -5,7 +5,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.soulscube.game.main.Game;
-import static com.soulscube.game.entities.Spawner.State.*;
+
+import static com.soulscube.game.entities.Spawner.State.ACTIVE;
+import static com.soulscube.game.entities.Spawner.State.INACTIVE;
 
 public class Spawner extends B2DSprite {
     public static enum State {
@@ -23,7 +25,9 @@ public class Spawner extends B2DSprite {
      */
     public Spawner(Body body) {
         super(body);
-        this.pos = body.getPosition();
+        pos = new Vector2();
+        pos.x = body.getPosition().x;
+        pos.y = body.getPosition().y+0.6f;
         Texture tex = Game.res.getTexture("spawner");
         split = TextureRegion.split(tex, 6, 6)[0];
         // set inactive as default
@@ -48,7 +52,7 @@ public class Spawner extends B2DSprite {
      *
      * @return spawn position
      */
-    public Vector2 getPos() {
+    public Vector2 getPosition() {
         return pos;
     }
 }

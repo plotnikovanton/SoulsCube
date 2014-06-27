@@ -155,7 +155,6 @@ public class Player extends B2DSprite {
         super.update(dt);
         if (body.getPosition().y < -100 / B2DVars.PPM) {
             setState(DEAD);
-            System.out.println("FALL");
         }
 
         if (currentState == SPAWN) {
