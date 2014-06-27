@@ -39,7 +39,7 @@ public class Play extends GameState {
 
     private Player player;
     private Cube cube;
-    private boolean debug = true;
+    private boolean debug = false;
 
     private Body startDoor;
     private Body endDoor;
@@ -199,6 +199,13 @@ public class Play extends GameState {
         Gdx.graphics.getGL20().glClearColor( 1, 1, 1, 1 );
         Gdx.graphics.getGL20().glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
+        // draw bg
+        sb.setProjectionMatrix(hudCam.combined);
+        sb.begin();
+        sb.draw(Game.res.getTexture("bg"), 0, 0);
+        sb.end();
+
+
         // draw tile map
         tmr.setView(cam);
         tmr.render();
@@ -282,7 +289,7 @@ public class Play extends GameState {
         Body body = world.createBody(bdef);
         fdef.filter.categoryBits = B2DVars.BIT_CUBE;
         fdef.filter.maskBits = B2DVars.BIT_GROUND;
-        shape.setAsBox(5 / PPM, 5 / PPM);
+        shape.setAsBox(3 / PPM, 3 / PPM);
         fdef.shape = shape;
         body.createFixture(fdef).setUserData("cube");
         cube = new Cube(body, player);

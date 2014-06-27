@@ -1,41 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="8" tilewidth="16" tileheight="16">
- <tileset firstgid="1" name="grass" tilewidth="16" tileheight="16">
-  <image source="grass.jpg" width="16" height="16"/>
+<map version="1.0" orientation="orthogonal" width="100" height="40" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="minecraft" tilewidth="16" tileheight="16">
+  <image source="summer.png" width="128" height="96"/>
  </tileset>
- <layer name="ground" width="40" height="8">
+ <tileset firstgid="49" name="door" tilewidth="18" tileheight="25">
+  <image source="../door.jpg" width="18" height="25"/>
+ </tileset>
+ <layer name="ground" width="100" height="40">
   <data encoding="base64" compression="zlib">
-   eJxjYMAEjAOASQGkqqcUjLqPMjCU3TcQeYFW+WYUYAIA5VQATg==
+   eJztWMtu2zAQZHJrbm2auJHhVpZ7sdBL///nWiEadDwYUrQriZSRBQZxJHK5u7MP2iF8yIfchzwSPgk+ZD15NFA+SnLCNjhb70VyOHBxWEtybLkXTpSHh5DHz1r+43wX+8fRXmDrnGi82Sf1c+1a0Xxgm9TGJ8FWhePMPqby0XGzBB+aD64OlIst965YfN3zp8T7JX1/CJ4H7a/g5R74SM3uWuZ6qj7vcabfwsfaUmKG1SQ/Ruz+4lthW1R2oU67lhTmoja/B7sG+9rCdqwpzEcr75CfpeRe+Pgs+JJYCz7AyS6BtQW9tC1w9lqi8a15fmyVj6kacLJVPkr30BxpRlwj8Av+bomP2uSWeojJVvgoOcem5JZ6iEntfAx2tYXtUJmzHlRq48PdNdpi1ryLxn/OelCpjY9BeLaV5AM8LBl/lRr5GKQkH0v2oymplY9B1v5+zvVQSmrmY+36QF8CL6nfN3J//7hWauejDfXZtaRsgY+2rBmryuDz7zAfH1zDjLcR+lvnm6Ch9dw/lgbbOCdusYVjsZRPx0ywLcDcMXI6/+ecJWycy89YnM8GHPfh84ugG3ENl43R4/h2+2K5o/nBfnY3xuOY2DO1LxedxBefEZfYc+BAwLM+g8smoZPPTkFzAzHp6BnnCexg3x1/Z9rrOHW2xjia8rGXePXhMqdj+1z8D6SvF05ieY9nOFPt6uU5rwVO4V+ON7L+KP8f5GzEW3lrSFfM9i74GBzMWodnAu+D366PxnSnbEjt1z3Iu97gbJ7F8k3ngNrkbGVOf47oIvq4vnry80T6XskePutkzh+wH/FM5yJPmA/tYU5XKhe0TnW96y+u3+jM6kO8Z2v8nO0d8co1MvDwawT3BuUDzzhX4H8sb08jXoPPuWO4rBPuDxoXjecLcRrLOcSb/emMTgbHQPsW2zc143XWd7SXaw48sS5w0YsurhWu1xPFEz7n5itqCbq4TjhPtFaBfbjsAVxvmoe8HvGG3RpzwPWnVN89y2e+G3Bt6ByJvUMeYVa5OxtqFXkLPs60l8FxdBx9p9jABs7zRvTk3ncVx1Ev5z3H2s0EjtnXkHePUH5ifLjZxnxyHsXul9jjbOee5e77uXD9nHvanqA9nHNb857X6D1B73tT/+dCZxDnsvKi89bd9wHWyfnm8ip1d8gBasnVGc5CnnOuqB2a9/xe743XIsUBr+E93Pv1byPrHJQX5WMAZjTnr8ZW44HzuQe5WtMe3sk5rg64j/L3ok50Ho3+OeD4YZtT893FPvWdGL5xf9D+xXcEfq93dJf7eq6bpX8A5NGpbg==
   </data>
  </layer>
- <objectgroup name="walls" width="40" height="8">
-  <object x="80" y="80" width="464" height="16"/>
-  <object x="80" y="0" width="464" height="16"/>
-  <object x="80" y="16" width="16" height="64"/>
-  <object x="528" y="16" width="16" height="64"/>
- </objectgroup>
- <objectgroup name="doors" width="40" height="8">
-  <object name="start" x="128" y="32" width="16" height="16"/>
-  <object name="end" x="288" y="16" width="48" height="64"/>
- </objectgroup>
- <objectgroup name="spikes" width="40" height="8"/>
- <objectgroup name="candys" width="40" height="8">
-  <object x="170" y="49">
-   <ellipse/>
-  </object>
-  <object x="209" y="34">
-   <ellipse/>
-  </object>
-  <object x="241" y="30">
-   <ellipse/>
-  </object>
-  <object x="259" y="49">
-   <ellipse/>
-  </object>
- </objectgroup>
- <layer name="Слой тайлов 2" width="40" height="8" opacity="0.36">
+ <layer name="water" width="100" height="40" opacity="0.24">
   <data encoding="base64" compression="zlib">
-   eJxjYBgegBELGxcNYyPz6QHQ7WREExts7kMWR6fp7T5c8YsefrjCczCAgYjTUYAfAABo0AAi
+   eJzt1+0KgyAYBlD/tH95/5c7gslexCzE2ohz4EVoMsInv1ICAAAAAAAAAAAAgP+0TK7Xva//OGv6juNRrZ0q/5Hvff3HOfO950+VXJbQmh9znZkfW59WHvH3+IxxcRxzp2K/Vn7Wqzl669TWlrnRyyMn69UsrW89rj+tPEoG8piv3rPjOMdx7+0xW5+YIeOOzlRn8qjnFONa94g6l3q/l8d1js6ue+uXPK6xd+drrVl1n707CePK+am0seKzOo/e/v9rb3R2CGc=
   </data>
  </layer>
+ <objectgroup name="walls" width="100" height="40">
+  <object x="352" y="432" width="400" height="16"/>
+  <object x="336" y="176" width="16" height="256"/>
+  <object x="352" y="288" width="48" height="16"/>
+  <object x="384" y="256" width="16" height="32"/>
+  <object x="384" y="256" width="32" height="16"/>
+  <object x="352" y="160" width="48" height="16"/>
+  <object x="400" y="144" width="32" height="16"/>
+  <object x="432" y="128" width="32" height="16"/>
+  <object x="432" y="112" width="32" height="16"/>
+  <object x="416" y="80" width="16" height="32"/>
+  <object x="400" y="64" width="16" height="16"/>
+  <object x="320" y="48" width="80" height="16"/>
+  <object x="320" y="0" width="16" height="48"/>
+  <object x="736" y="448" width="16" height="192"/>
+  <object x="1088" y="432" width="256" height="16"/>
+  <object x="1280" y="160" width="16" height="224"/>
+  <object x="1296" y="368" width="48" height="16"/>
+  <object x="1328" y="384" width="16" height="48"/>
+  <object x="1248" y="224" width="16" height="48"/>
+  <object x="1248" y="256" width="32" height="16"/>
+  <object x="1216" y="224" width="48" height="16"/>
+  <object x="928" y="384" width="64" height="16"/>
+  <object x="912" y="304" width="32" height="16"/>
+  <object x="848" y="320" width="32" height="16"/>
+  <object x="816" y="336" width="64" height="16"/>
+  <object x="784" y="352" width="32" height="16"/>
+  <object x="752" y="368" width="48" height="16"/>
+  <object x="752" y="384" width="112" height="16"/>
+  <object x="976" y="272" width="32" height="32"/>
+  <object x="912" y="320" width="32" height="16"/>
+  <object x="1040" y="240" width="32" height="32"/>
+  <object x="1104" y="208" width="80" height="16"/>
+  <object x="1200" y="144" width="96" height="16"/>
+  <object x="1152" y="112" width="48" height="32"/>
+  <object x="1168" y="80" width="32" height="32"/>
+  <object x="1184" y="64" width="16" height="16"/>
+  <object x="1200" y="48" width="32" height="16"/>
+  <object x="1232" y="32" width="32" height="16"/>
+  <object x="1264" y="16" width="32" height="16"/>
+  <object x="1296" y="0" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="doors" width="100" height="40">
+  <object name="start" x="384" y="208" width="16" height="16"/>
+  <object name="end" x="1296" y="400" width="16" height="32"/>
+  <object name="checkpoint" x="864" y="304" width="16" height="16"/>
+  <object name="checkpoint" x="1232" y="208" width="16" height="16"/>
+  <object name="checkpoint" x="704" y="416" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="spikes" width="100" height="40">
+  <object x="752" y="432" width="336" height="16"/>
+ </objectgroup>
+ <objectgroup name="candys" width="100" height="40">
+  <object x="448" y="336" width="16" height="16">
+   <ellipse/>
+  </object>
+  <object x="464" y="384" width="16" height="16">
+   <ellipse/>
+  </object>
+  <object x="800" y="336">
+   <ellipse/>
+  </object>
+  <object x="928" y="288">
+   <ellipse/>
+  </object>
+  <object x="992" y="256">
+   <ellipse/>
+  </object>
+  <object x="1056" y="224">
+   <ellipse/>
+  </object>
+  <object x="1136" y="192">
+   <ellipse/>
+  </object>
+  <object x="1232" y="208">
+   <ellipse/>
+  </object>
+  <object x="848" y="368">
+   <ellipse/>
+  </object>
+  <object x="960" y="368">
+   <ellipse/>
+  </object>
+ </objectgroup>
 </map>

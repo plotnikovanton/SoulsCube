@@ -63,7 +63,7 @@ public class GameStateManager {
         GameState g = gameStates.pop();
         g.dispose();
         curLevel++;
-        if (curLevel<levels.length) {
+        if (curLevel>=levels.length) {
             pushState(States.GAME_END);
         } else {
             pushState(States.PLAY);
