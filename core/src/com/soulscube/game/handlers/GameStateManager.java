@@ -1,6 +1,7 @@
 package com.soulscube.game.handlers;
 
 import com.soulscube.game.main.Game;
+import com.soulscube.game.states.GameEnd;
 import com.soulscube.game.states.GameState;
 import com.soulscube.game.states.Play;
 
@@ -18,6 +19,7 @@ public class GameStateManager {
 
     public static enum States {
         PLAY,
+        GAME_END
     }
 
     public GameStateManager(Game game) {
@@ -39,6 +41,7 @@ public class GameStateManager {
 
     public GameState getState(States state) {
         if (state == States.PLAY) return loadLevel(curLevel);
+        if (state == States.GAME_END) return new GameEnd(this);
         return null;
     }
 
@@ -60,7 +63,11 @@ public class GameStateManager {
         GameState g = gameStates.pop();
         g.dispose();
         curLevel++;
-        pushState(States.PLAY);
+        if (curLevel<levels.length) {
+            pushState(States.GAME_END);
+        } else {
+            pushState(States.PLAY);
+        }
         //return loadLevel(curLevel + 1);
     }
 

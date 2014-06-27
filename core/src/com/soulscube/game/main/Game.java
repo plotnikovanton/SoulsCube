@@ -46,6 +46,21 @@ public class Game implements ApplicationListener{
         res.loadTexture("spawner.png", "spawner");
         res.loadTexture("cube.png", "cube");
 
+        res.loadMusic("game.mp3", "main_music");
+        res.getMusic("main_music").setLooping(true);
+        res.getMusic("main_music").setVolume(0.9f);
+        res.getMusic("main_music").play();
+
+        res.loadSound("sfx/candy.wav", "earn_coin");
+        res.loadSound("sfx/laugh.wav", "laugh");
+        res.loadSound("sfx/jump.wav", "jump");
+        res.loadSound("sfx/fall.ogg", "fall");
+        res.loadSound("sfx/blade.ogg", "spike");
+        res.loadSound("sfx/swap.wav", "swap");
+        res.loadSound("sfx/timer.wav", "timer");
+
+        //res.loadSound("sfx/spawn.wav", "spawn");
+
         sb = new SpriteBatch();
         cam = new OrthographicCamera();
         cam.setToOrtho(false, V_WIDTH, V_HEIGHT);

@@ -111,6 +111,7 @@ public class Player extends B2DSprite {
                 //body.setActive(false);
                 currentState = DEAD;
             } else if (state == SPAWN) {
+//                Game.res.getSound("spawn").play();
                 timer = 0;
                 animation = animations.get(SPAWN);
                 body.setTransform(checkpoint, 0f);
@@ -136,6 +137,7 @@ public class Player extends B2DSprite {
      * add jump force to player body
      */
     public void jump() {
+        Game.res.getSound("jump").play(0.2f);
         body.applyForceToCenter(0, 200, true);
     }
 
@@ -153,7 +155,10 @@ public class Player extends B2DSprite {
      */
     public void update (float dt) {
         super.update(dt);
+
+        // Fall
         if (body.getPosition().y < -100 / B2DVars.PPM) {
+            Game.res.getSound("fall").play();
             setState(DEAD);
         }
 

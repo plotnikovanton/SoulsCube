@@ -137,6 +137,7 @@ public class Play extends GameState {
         // ##################
         if (cl.isWin() && coins.size == 0) {
             System.out.println("NextLevelTime");
+            Game.res.getSound("laugh").play();
             dispose();
             gsm.nextLevel();
         }
@@ -155,6 +156,7 @@ public class Play extends GameState {
         // Check spike contact
         // ##################
         if (cl.isPlayerOnSpike()){
+            Game.res.getSound("spike").play(0.4f);
             if (player.getState()!=Player.State.SPAWN)player.setState(Player.State.DEAD);
         }
 

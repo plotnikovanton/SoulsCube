@@ -1,5 +1,6 @@
 package com.soulscube.game.entities;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -21,10 +22,13 @@ public class Cube extends B2DSprite {
     private Vector2 target;
     private Player player;
     private TextureRegion[] textures;
+    private Sound timerSnd;
 
     public Cube(Body body, Player player) {
         super(body);
         this.player = player;
+        timerSnd = Game.res.getSound("timer");
+        //timerSnd.loop();
         velocity = new Vector2(0,0);
         currentState = -1;
         textures = TextureRegion.split(Game.res.getTexture("cube"), 6, 6)[0];
@@ -39,6 +43,7 @@ public class Cube extends B2DSprite {
         if (currentState != state){
             // preset
             if (currentState == WAIT) {
+                timerSnd.stop();
                 Filter filter = body.getFixtureList().first().getFilterData();
                 filter.maskBits = B2DVars.BIT_GROUND;
                 body.getFixtureList().first().setFilterData(filter);
@@ -49,6 +54,7 @@ public class Cube extends B2DSprite {
             }
             // set
             if (state == WAIT) {
+                timerSnd.loop();
                 timer = 0;
                 Filter filter = body.getFixtureList().first().getFilterData();
                 filter.maskBits = B2DVars.BIT_GROUND | B2DVars.BIT_PLAYER;
@@ -60,6 +66,7 @@ public class Cube extends B2DSprite {
                 body.getFixtureList().first().setSensor(true);
                 setAnimation(new TextureRegion[]{textures[0]}, 100);
             } else if (state == CONTROLLED) {
+
                 setAnimation(new TextureRegion[]{textures[2]}, 100);
             }
             // post set

@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.soulscube.game.entities.Player;
 import com.soulscube.game.entities.Spawner;
+import com.soulscube.game.main.Game;
 
 public class MyContactListener implements ContactListener {
     private int numFootContacts;
@@ -98,6 +99,7 @@ public class MyContactListener implements ContactListener {
     }
     private void startCandyContact(Fixture fa, Fixture fb) {
         if (fb.getUserData() != null && fb.getUserData().equals("candy")) {
+            Game.res.getSound("earn_coin").play(0.5f);
             Fixture tmp = fb;
             fb = fa;
             fa = tmp;
