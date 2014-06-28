@@ -89,6 +89,8 @@ public class Player extends B2DSprite {
             // PRESET
             if (currentState == DEAD) {
                 //body.getFixtureList().first().setSensor(false);
+                speedX = 0;
+                body.setLinearVelocity(0,0);
             } else if (currentState == SPAWN) {
                 speedX = 0;
                 //body.getFixtureList().first().setSensor(false);

@@ -27,7 +27,7 @@ public class Spawner extends B2DSprite {
         super(body);
         pos = new Vector2();
         pos.x = body.getPosition().x;
-        pos.y = body.getPosition().y+0.6f;
+        pos.y = body.getPosition().y+0.1f;
         Texture tex = Game.res.getTexture("spawner");
         split = TextureRegion.split(tex, 6, 6)[0];
         // set inactive as default
