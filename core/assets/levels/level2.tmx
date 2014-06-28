@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="40" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="summer" tilewidth="16" tileheight="16">
+  <image source="summer.png" width="128" height="96"/>
+ </tileset>
+ <tileset firstgid="49" name="door" tilewidth="18" tileheight="25">
+  <image source="../door.jpg" width="18" height="25"/>
+ </tileset>
+ <layer name="Слой тайлов 1" width="100" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmt1uGzkMhXXj622zGLcuNm6du+xd3//lNgOE2OPPh5Tmx3EXXQKCkBlJI5Hi4SGdz621pxXty1v7Kv3nwXZ6b6Pjf7c26+bbikZ7nAbb5b2Njv/d2qyblxXt+1v7If1F2mTaUd6/YPz/bfk9/bKgPZuW2WiJT+nd2eu+Lb2/7hzVWS4rvvOt0zudUzK7nN/3u8RGvf1s6eM7a8b3znFcsG7WK36M9plk48MuR9n3ecBGR1lHn0Vbuu+YPw2M133wHNm6br/uvlXffX1rfy/oK6nmqU2iZeN07/r8uV3bM9ZRfXA9p4+pc84Yy3XiuzpOz3OWue6u8Wzu++qXI/5WSYxryXzFryMax8VY91x1c5axtHfonvMy7K/wTPcec/S79Pdzoj/dR4VXxIc1eEXp4Zc2+ntwDc6jbt26GVaoPao45vQQa6u+nQ0qvIp1K9yiP1Z+vEay9dSv1S6Ob3AebUKcybCCvpWN57qndm03tanueRpYcytebZEK97jfOFfFydXf3Tl1Laebc/N6Vf50wroZ7ul9v7RbG5yT73HtJXi1l4zyn4t5vkUO7dY+1Z19wThyQeKTiyXkXRPWIR8jbmV41aTfQ3q8LXxjLS46me0R99Thuer8td3qT3GFOPfabm12are4qbrnOuRr98YrFV03y2P3ltkeVUyhzniXKTEv9ORs57A07oTqWTky8Yr+tJVXOXG4xHrNyBrBozK8VjngfZWnuUbRtVT3quMJf2tcfDHvmF9qXrM2D7y3OL7F2D3v/4B56h8j3IuNovEoy0fpE4rDfBdrEa/Upo4PfbTwN4FeDbRnD/oRMVz1qXGbcjDjuB458LzfwCmdo/kx8YpcYS9+s5cQo5Vj6jkPmOP4FWME6wV6LymHdo3rLnao/rLvVfUw1o0y3Hqk8LystTr/eG7X8cPpvHrn4mXwtSqWh/6Yx4QtVK8ZXrG+lOVxl+S540qXZJxiztz/kbRP7d976HSm914xgvpjfkDuwnxAseLJrMe8UdfUffBZVq9aW28/Fc+pa45j3k2exVjreJ7D+MnoU4VcxuVlxBO1ByXsG+elPeh7GvcVl1iXW1pvj/n0qxPW7+V5+lzH6x2v6l16ZsbyLGegaCzhfVB9khs0zGH90nErF7NCn1VevKSurn7luI5rvd/fMpzs5Qfk8dm9pk5Vf7zPjhvo2RWHnT0ybs3Yl+HXmnoR/a3XiGmujk3cHckXWK+PubP82a5tFkLdc53wF9rjSc7D/Wd7jX0p3uoZe3j1aCGOZ/GScZzvZz7wF8aH0JeYu8W9d/7BGEGe5rg161a67wqvnPxMNXd/cXyIWJDlYvFccS9EdVhxLWcP5tXsyc/II8jBKrxSPSypIfxKktUGdd+Oa2n+ltXCWru9Dw6fGNsY5zKeSrzSM/1X7RHiakv6Tm3B3x01hjD/oO6VN6qPOL+Id1F/6/Er982ePfT/yvZ47mJ13Hli0SMkbECepf/v4PiF5iAuT16LVyHkVRoH9Z44vw3d0uddrKAtXF2I9/+eEvlvlvf28pEqD9zCr+hn5LeMcy430jGMsXxPXJkwz+WRei/2kirv1T0TrzRvHvmddMnvgb38zvUZN8/skPkL43S8y/5fwsXl8C+OY57GbygWVN+LOboec7Cl9atMlv5/ZubHGT/Vvzkvy8lHvq81ygnve1xVbbH2nD2c2/L/omt6h18Zvrh55O5VnSv7/8+4r9l3yR+y+kzvO7wvikMj+12DP6w/HXdYx/XUVZVHVfuL1sML8hJtahO3Pu9Lj0ctwSvWudXu0VgHX4Nj9+5j744PcnwPTzSuad2c/NzNDzuP7LvnP/ye8mvldB+Be1t6rfu7unTGm9w6Ouci61a/V9wLr1zecy+82rMnflQ16KrpnNHvLxm/Fg9ol18Bn6pe8YJ6Hf3dYJRnbekfjSMf1asP9PDlkf0/72lwZQ==
+  </data>
+ </layer>
+ <layer name="Слой тайлов 2" width="100" height="40" opacity="0.54">
+  <data encoding="base64" compression="zlib">
+   eJzt1EEKgCAQBVAhd3b/81bUgAwtgkIXvQcfQTfyBy0FAAAAAAAAAAAAABhteZi6p13ptY/2OR295L5z4pwxovO7NxHrOu12/9TPpKaYxRzxP60pAAAAb2xLYgGb
+  </data>
+ </layer>
+ <objectgroup name="doors" width="100" height="40">
+  <object name="start" x="240" y="96"/>
+  <object name="end" x="112" y="400" width="16" height="16"/>
+  <object name="checkpoint" x="480" y="288" width="16" height="16"/>
+  <object name="checkpoint" x="608" y="240" width="16" height="16"/>
+  <object name="checkpoint" x="1168" y="480" width="16" height="16"/>
+  <object name="checkpoint" x="896" y="464" width="16" height="16"/>
+  <object name="checkpoint" x="544" y="432" width="16" height="16"/>
+  <object name="checkpoint" x="240" y="432" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="candys" width="100" height="40">
+  <object x="1168" y="240">
+   <ellipse/>
+  </object>
+  <object x="240" y="176">
+   <ellipse/>
+  </object>
+  <object x="240" y="208">
+   <ellipse/>
+  </object>
+  <object x="240" y="240">
+   <ellipse/>
+  </object>
+  <object x="240" y="272">
+   <ellipse/>
+  </object>
+  <object x="576" y="272">
+   <ellipse/>
+  </object>
+  <object x="752" y="208">
+   <ellipse/>
+  </object>
+  <object x="784" y="208">
+   <ellipse/>
+  </object>
+  <object x="720" y="208">
+   <ellipse/>
+  </object>
+  <object x="688" y="208">
+   <ellipse/>
+  </object>
+  <object x="854" y="377">
+   <ellipse/>
+  </object>
+  <object x="464" y="432">
+   <ellipse/>
+  </object>
+  <object x="368" y="432">
+   <ellipse/>
+  </object>
+  <object x="272" y="432">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="walls" width="100" height="40">
+  <object x="112" y="160" width="16" height="16"/>
+  <object x="96" y="176" width="16" height="16"/>
+  <object x="112" y="192" width="16" height="32"/>
+  <object x="128" y="224" width="48" height="16"/>
+  <object x="144" y="240" width="16" height="16"/>
+  <object x="128" y="256" width="16" height="16"/>
+  <object x="112" y="272" width="16" height="16"/>
+  <object x="128" y="288" width="32" height="16"/>
+  <object x="160" y="304" width="352" height="16"/>
+  <object x="416" y="192" width="144" height="48"/>
+  <object x="560" y="192" width="32" height="16"/>
+  <object x="592" y="176" width="48" height="16"/>
+  <object x="400" y="176" width="16" height="16"/>
+  <object x="368" y="160" width="32" height="16"/>
+  <object x="384" y="144" width="16" height="16"/>
+  <object x="368" y="128" width="16" height="16"/>
+  <object x="352" y="112" width="16" height="16"/>
+  <object x="336" y="96" width="16" height="16"/>
+  <object x="304" y="112" width="32" height="16"/>
+  <object x="304" y="80" width="16" height="32"/>
+  <object x="176" y="128" width="32" height="16"/>
+  <object x="128" y="144" width="48" height="16"/>
+  <object x="176" y="96" width="16" height="32"/>
+  <object x="192" y="80" width="16" height="16"/>
+  <object x="208" y="64" width="16" height="16"/>
+  <object x="224" y="48" width="64" height="16"/>
+  <object x="288" y="64" width="16" height="16"/>
+  <object x="640" y="160" width="240" height="16"/>
+  <object x="592" y="256" width="80" height="16"/>
+  <object x="656" y="272" width="16" height="32"/>
+  <object x="656" y="240" width="32" height="16"/>
+  <object x="688" y="224" width="144" height="16"/>
+  <object x="816" y="304" width="16" height="64"/>
+  <object x="832" y="352" width="16" height="48"/>
+  <object x="864" y="368" width="64" height="32"/>
+  <object x="864" y="272" width="16" height="32"/>
+  <object x="880" y="320" width="96" height="16"/>
+  <object x="960" y="336" width="16" height="112"/>
+  <object x="976" y="432" width="176" height="16"/>
+  <object x="960" y="496" width="240" height="16"/>
+  <object x="1200" y="336" width="16" height="176"/>
+  <object x="1184" y="368" width="16" height="16"/>
+  <object x="1136" y="304" width="16" height="16"/>
+  <object x="1120" y="208" width="16" height="128"/>
+  <object x="1136" y="192" width="64" height="16"/>
+  <object x="1200" y="208" width="16" height="32"/>
+  <object x="1120" y="416" width="16" height="16"/>
+  <object x="800" y="480" width="112" height="48"/>
+  <object x="912" y="528" width="48" height="16"/>
+  <object x="960" y="512" width="16" height="16"/>
+  <object x="736" y="464" width="64" height="16"/>
+  <object x="528" y="448" width="208" height="16"/>
+  <object x="432" y="448" width="48" height="16"/>
+  <object x="240" y="448" width="48" height="16"/>
+  <object x="336" y="448" width="48" height="16"/>
+  <object x="64" y="416" width="128" height="32"/>
+  <object x="16" y="400" width="16" height="48"/>
+  <object x="32" y="384" width="16" height="16"/>
+  <object x="48" y="368" width="16" height="16"/>
+  <object x="64" y="352" width="32" height="16"/>
+  <object x="96" y="336" width="96" height="16"/>
+  <object x="192" y="352" width="16" height="16"/>
+  <object x="208" y="368" width="352" height="16"/>
+  <object x="560" y="384" width="48" height="16"/>
+  <object x="608" y="400" width="224" height="16"/>
+  <object x="848" y="400" width="80" height="48"/>
+  <object x="816" y="416" width="32" height="16"/>
+  <object x="624" y="304" width="32" height="16"/>
+ </objectgroup>
+ <objectgroup name="spikes" width="100" height="40">
+  <object x="816" y="240" width="16" height="64"/>
+  <object x="880" y="176" width="16" height="144"/>
+  <object x="515" y="314" width="108" height="5"/>
+  <object x="848" y="384" width="16" height="16"/>
+  <object x="1200" y="240" width="16" height="96"/>
+  <object x="1120" y="336" width="16" height="80"/>
+  <object x="912" y="512" width="48" height="16"/>
+  <object x="32" y="448" width="208" height="16"/>
+  <object x="288" y="448" width="48" height="16"/>
+  <object x="384" y="448" width="48" height="16"/>
+  <object x="480" y="448" width="48" height="16"/>
+ </objectgroup>
+</map>
